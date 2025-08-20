@@ -14,7 +14,10 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/signup", form);
+      const res = await axios.post(
+        "https://investment-portfolio-backend-4rr0.onrender.com/api/auth/signup",
+        form
+      );
       localStorage.setItem("token", res.data.token);
       navigate("/login");
     } catch (err) {
@@ -27,9 +30,24 @@ const Signup = () => {
       <h2>Signup</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <input type="text" name="name" placeholder="Name" onChange={handleChange} />
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} />
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          onChange={handleChange}
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={handleChange}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={handleChange}
+        />
         <button type="submit">Signup</button>
       </form>
     </div>
