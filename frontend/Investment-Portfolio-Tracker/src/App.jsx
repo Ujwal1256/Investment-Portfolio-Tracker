@@ -4,27 +4,35 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
+import "./App.css";
+import Portfolios from "./pages/Portfolios";
+import Settings from "./pages/Settings";
+import DashBoardLayout from "./pages/DashBoardLayout";
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100">
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
 
-        {/* Protected Route */}
+
+        {/* Protected Dashboard Layout with Nested Routes */}
         <Route
-          path="/dashboard"
+          path="/"
           element={
             <ProtectedRoute>
-              <Dashboard />
+              <DashBoardLayout />
             </ProtectedRoute>
           }
-        />
+        >
+
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/portfolios" element={<Portfolios />} />
+          <Route path="/settings" element={<Settings />} />
+        </Route>
       </Routes>
-    </div>
   );
 }
 
